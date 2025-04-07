@@ -4,19 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <main>
-        <form>
-            <div>
-                <input name="email-input" type="mail" placeholder="Email" required>
-                <label for="email-input"></label>
+    <main class="">
+        <form method="POST" class="mt-6 mb-6 pt-6 pb-6">
+            <div class="container is-flex is-flex-direction-column is-fluid">
+                <div class="mb-2">
+                    <label class="label">Email</label>
+                    <input id="email-input" class="input" type="email" placeholder="user@email.com">
+                </div>
+                <div class="mb-2">
+                    <label class="label">Password</label>
+                    <input id="password-input" class="input" type="password" placeholder="*****">
+                </div>
+                <div id="message-box" class="is-flex is-align-content-center"></div>
+                <div class="mt-2 is-flex is-justify-content-space-evenly">
+                    <button id="login-btn" class="button is-normal">Login</button>
+                    <button id="register-btn" class="button is-normal ">Register</button>
+                </div>
             </div>
-            <button>Login</button>
-            <button>Register</button>
         </form>
     </main>
-    <script src="js/script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
