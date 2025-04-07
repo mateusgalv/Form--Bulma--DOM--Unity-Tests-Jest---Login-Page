@@ -2,30 +2,40 @@ const loginBtn = document.getElementById("login-btn");
 const registerBtn = document.getElementById("register-btn");
 
 const emailInput = document.getElementById("email-input");
+const passwordInput = document.getElementById("password-input");
 
 const login = () => {
-
+    console.log('login');
 };
 
-const validateUser = () => {
+const tryLogin = () => {
+    const users = JSON.parse(localStorage.getItem("users"));
+    const user = users.find(user => user.email === emailInput.value);
+    if(!user) {
+        console.log('failed login');
+    } else if(user.password === passwordInput.value) {
+        login();
+    } else {
+        console.log('failed login');
+    }
+};
+
+const validateEmail = () => {
     const email = emailInput.value;
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     
-    if(!regex.test(email)) {
-        emailInput.classList.add("is-danger");
-    } else {
-        emailInput.classList.remove("is-danger");
-        // login();
-        window.location.href = "home.html";
-    }
+    return regex.test(email);
 };
 
 loginBtn.addEventListener('click', (event) => {
     event.preventDefault();
-    // must validade user credentials
-    console.log(event)
-    validateUser();
-    // should redirect to home page or return error
+
+    const isValidEmail = validateEmail();
+    if(!isValidEmail) {
+        console.log("invalid email");
+    } else {
+        tryLogin();
+    }
 });
 
 registerBtn.addEventListener('click', (event) => {
@@ -33,3 +43,10 @@ registerBtn.addEventListener('click', (event) => {
     window.location.href = "registration.html";
     // should redirect to registration page
 });
+
+window.onload = () => {
+    localStorage.setItem("users", JSON.stringify([{
+        email: "admin@admin.com",
+        password: "admin",
+    }]));
+};
