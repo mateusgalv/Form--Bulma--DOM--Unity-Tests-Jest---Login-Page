@@ -1,0 +1,11 @@
+form {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 15px 0;
+    border: 1px solid #ccc;
+    border-radius: 22px;
+}
+
+#message-box {
+    height: 30px;
+}
