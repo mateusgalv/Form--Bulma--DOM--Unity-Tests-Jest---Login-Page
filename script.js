@@ -59,7 +59,7 @@ loginBtn.addEventListener('click', (event) => {
 
 registerBtn.addEventListener('click', (event) => {
     event.preventDefault();
-    window.location.href = "registration.html";
+    window.location.href = "pages/registration.html";
 });
 
 window.onload = () => {
