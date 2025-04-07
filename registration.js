@@ -8,16 +8,32 @@ const username = document.getElementById('registration-username-input');
 const email = document.getElementById("registration-email-input");
 const password = document.getElementById("registration-password-input");
 const passwordCheck = document.getElementById("registration-password-repeat-input");
-const users = JSON.parse(localStorage.getItem("users"));
+
+const register = () => {
+    const newUser = {
+        name: name.value,
+        surname: surname.value,
+        username: username.value,
+        email: email.value,
+        password: password.value,
+    };
+
+    const users = JSON.parse(localStorage.getItem("users"));
+    users.push(newUser);
+    
+    localStorage.setItem("users", JSON.stringify(users));
+};
 
 const resetForm = () => {
-    const danger = document.getElementsByClassName('is-danger');
+    const danger = document.getElementsByClassName("is-danger");
     for(let i = 0; i < danger.length; i++) {
         danger[i].classList.remove("is-danger");
     }
 };
 
 const validateForm = () => {
+    const users = JSON.parse(localStorage.getItem("users"));
+
     const isValidName = validateNames(name.value, surname.value);
     if(!isValidName) {
         if(name.value === "") {
@@ -27,6 +43,12 @@ const validateForm = () => {
             surname.classList.add("is-danger");
             surname.placeholder = "Please enter a surname";
         }
+        return false;
+    }
+
+    if(username.value === "") {
+        username.classList.add("is-danger");
+        username.placeholder = "Enter a username";
         return false;
     }
 
@@ -81,7 +103,7 @@ confirmBtn.addEventListener("click", (event) => {
     const isValid = validateForm();
 
     if(isValid) {
-        //register();
+        register();
         //return to index
     }
 });

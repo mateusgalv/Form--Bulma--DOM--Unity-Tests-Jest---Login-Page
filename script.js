@@ -2,7 +2,6 @@ import { validateEmail } from './modules/validation.js';
 
 const loginBtn = document.getElementById("login-btn");
 const registerBtn = document.getElementById("register-btn");
-const confirmRegistrationBtn = document.getElementById("confirm-registration-btn");
 
 const emailInput = document.getElementById("email-input");
 const passwordInput = document.getElementById("password-input");
@@ -55,20 +54,9 @@ loginBtn.addEventListener('click', (event) => {
 
 registerBtn.addEventListener('click', (event) => {
     event.preventDefault();
+    const users = JSON.parse(localStorage.getItem('users'));
+    if(!users) {
+        localStorage.setItem('users', JSON.stringify([]));
+    }
     window.location.href = "pages/registration.html";
 });
-
-confirmRegistrationBtn.addEventListener('click', (event) => {
-    event.preventDefault();
-
-});
-
-window.onload = () => {
-    localStorage.setItem("users", JSON.stringify([{
-        email: "admin@admin.com",
-        password: "admin",
-        name: "Admin",
-        surname: "Admin",
-        username: "admin",
-    }]));
-};

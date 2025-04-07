@@ -11,6 +11,7 @@ export const validateNames = (name, surname) => {
 };
 
 export const validateUsername = (username, users) => {
+    if(!users) return false;
     const user = users.find(user => user.username === username);
     if(username === "" || user) {
         return false;
