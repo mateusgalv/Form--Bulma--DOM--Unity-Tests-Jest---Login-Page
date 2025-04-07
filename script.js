@@ -3,13 +3,19 @@ const registerBtn = document.getElementById("register-btn");
 
 const emailInput = document.getElementById("email-input");
 
+const login = () => {
+
+};
+
 const validateUser = () => {
     const email = emailInput.value;
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     
     if(!regex.test(email)) {
-        console.log("invalid email");
+        emailInput.classList.add("is-danger");
     } else {
+        emailInput.classList.remove("is-danger");
+        // login();
         window.location.href = "home.html";
     }
 };
