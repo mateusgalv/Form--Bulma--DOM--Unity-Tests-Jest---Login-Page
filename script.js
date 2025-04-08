@@ -1,3 +1,5 @@
+import { validateEmail } from './modules/validation.js';
+
 const loginBtn = document.getElementById("login-btn");
 const registerBtn = document.getElementById("register-btn");
 
@@ -29,13 +31,6 @@ const tryLogin = () => {
     }
 };
 
-const validateEmail = () => {
-    const email = emailInput.value;
-    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    
-    return regex.test(email);
-};
-
 const resetFields = () => {
     emailInput.value = "";
     passwordInput.value = "";
@@ -45,7 +40,7 @@ const resetFields = () => {
 loginBtn.addEventListener('click', (event) => {
     event.preventDefault();
 
-    const isValidEmail = validateEmail();
+    const isValidEmail = validateEmail(emailInput.value);
     if(!isValidEmail) {
         resetFields();
         emailInput.classList.add("is-danger");
@@ -59,15 +54,9 @@ loginBtn.addEventListener('click', (event) => {
 
 registerBtn.addEventListener('click', (event) => {
     event.preventDefault();
-    window.location.href = "registration.html";
+    const users = JSON.parse(localStorage.getItem('users'));
+    if(!users) {
+        localStorage.setItem('users', JSON.stringify([]));
+    }
+    window.location.href = "pages/registration.html";
 });
-
-window.onload = () => {
-    localStorage.setItem("users", JSON.stringify([{
-        email: "admin@admin.com",
-        password: "admin",
-        name: "Admin",
-        surname: "Admin",
-        username: "admin",
-    }]));
-};

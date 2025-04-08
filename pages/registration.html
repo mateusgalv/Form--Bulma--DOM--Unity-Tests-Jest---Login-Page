@@ -4,8 +4,45 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
+    <link rel="stylesheet" href="../styles.css">
 </head>
 <body>
-    REGISTRATION
+    <main>
+        <form method="POST" class="mt-6 mb-6 pt-6 pb-6">
+            <div class="container is-flex is-flex-direction-column is-fluid">
+                <p>Register</p>
+                <div class="mb-2">
+                    <label class="label">Name</label>
+                    <input id="registration-name-input" class="input" type="text" placeholder="John">
+                </div>
+                <div class="mb-2">
+                    <label class="label">Surname</label>
+                    <input id="registration-surname-input" class="input" type="text" placeholder="Doe">
+                </div>
+                <div class="mb-2">
+                    <label class="label">Username</label>
+                    <input id="registration-username-input" class="input" type="text" placeholder="john-doe">
+                </div>
+                <div class="mb-2">
+                    <label class="label">Email</label>
+                    <input id="registration-email-input" class="input" type="email" placeholder="user@email.com">
+                </div>
+                <div class="mb-2">
+                    <label class="label">Password</label>
+                    <input id="registration-password-input" class="input" type="password" placeholder="*****">
+                </div>
+                <div class="mb-2">
+                    <label class="label">Repeat password</label>
+                    <input id="registration-password-repeat-input" class="input" type="password" placeholder="*****">
+                </div>
+                <div class="mt-5 is-flex is-justify-content-space-evenly">
+                    <button id="return-btn" class="button is-normal">Return</button>
+                    <button id="registration-confirm-btn" class="button is-normal">Register</button>
+                </div>
+            </div>
+        </form>
+    </main>
+    <script type="module" src="../registration.js"></script>
 </body>
 </html>
