@@ -17,6 +17,7 @@ const register = () => {
         username: username.value,
         email: email.value,
         password: password.value,
+        avatar: "male",
     };
 
     const users = JSON.parse(localStorage.getItem("users"));

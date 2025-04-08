@@ -1,9 +1,15 @@
-form {
+.my-card {
     max-width: 400px;
     margin: 0 auto;
     padding: 15px 0;
     border: 1px solid #ccc;
     border-radius: 22px;
+}
+
+.my-img {
+    max-width: 100px;
+    max-height: 100px;
+    margin: 0 auto;
 }
 
 #message-box {
