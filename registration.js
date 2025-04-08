@@ -1,6 +1,7 @@
 import { validateNames, validateUsername, validateEmail, validatePassword } from "./modules/validation.js";
 
 const confirmBtn = document.getElementById("registration-confirm-btn");
+const returnBtn = document.getElementById("return-btn");
 
 const name = document.getElementById('registration-name-input');
 const surname = document.getElementById('registration-surname-input');
@@ -20,7 +21,7 @@ const register = () => {
 
     const users = JSON.parse(localStorage.getItem("users"));
     users.push(newUser);
-    
+
     localStorage.setItem("users", JSON.stringify(users));
 };
 
@@ -101,9 +102,13 @@ confirmBtn.addEventListener("click", (event) => {
     event.preventDefault();
     resetForm();
     const isValid = validateForm();
-
     if(isValid) {
         register();
-        //return to index
+        window.location.href = "../index.html";
     }
+});
+
+returnBtn.addEventListener("click", (event) => {
+    event.preventDefault();
+    window.location.href = "../index.html";
 });
