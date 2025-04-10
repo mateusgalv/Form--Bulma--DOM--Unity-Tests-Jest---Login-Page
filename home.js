@@ -61,9 +61,11 @@ logout.addEventListener("click", () => {
 });
 
 deleteBtn.addEventListener("click", () => {
-    sessionStorage.removeItem('user');
     const users = JSON.parse(localStorage.getItem('users'));
-    // delete user from local storage
+    const { username } = JSON.parse(sessionStorage.getItem('user'));
+    const updatedUsers = users.filter(user => user.username !== username);
+  
+    localStorage.setItem('users', JSON.stringify(updatedUsers));
     alert("Your account has been deleted.");
     window.location.href = "../index.html";
 });
